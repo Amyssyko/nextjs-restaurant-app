@@ -1,4 +1,3 @@
-import Header from '@/components/head'
 import RestaurantItem from '@/components/restaurant-item'
 import getUrl from '@/utils/get-domain'
 import { Metadata } from 'next'
@@ -85,7 +84,6 @@ const Page: FC<Props> = async ({ params }) => {
 	}
 	return (
 		<>
-			<Header title='Restaurant Details' />
 			<section>
 				<script
 					type='application/ld+json'

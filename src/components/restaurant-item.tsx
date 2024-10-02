@@ -16,6 +16,7 @@ const RestaurantItem: FC<Restaurant & { isLink?: boolean }> = ({
 	return (
 		<article key={id}>
 			<img
+				loading='lazy'
 				alt={name}
 				className='mb-3 aspect-auto h-[400px] w-full rounded-md object-cover'
 				src={image}

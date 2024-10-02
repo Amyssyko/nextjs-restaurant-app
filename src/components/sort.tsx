@@ -27,8 +27,6 @@ const Sort = () => {
 		replace(`${pathname}?${params.toString()}`)
 	}
 
-	console.log(searchParams.get('sort'))
-
 	return (
 		<form
 			onChange={handleSubmit}

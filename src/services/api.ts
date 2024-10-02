@@ -24,12 +24,15 @@ const api = {
 	}> => {
 		'use server'
 
-		console.log(sort)
 		await sleep(750)
 
-		const csv =
-			'https://docs.google.com/spreadsheets/d/1PBCLBZ_2ZEFmPt8rXuEJu2REBHKXEkaeOp-0XX9I_N0/pub?output=csv'
-		const [, ...data] = await fetch(csv)
+		const { CSV_URL } = process.env
+		if (!CSV_URL)
+			return {
+				data: [],
+				pagination: { totalItem: 0, page: 1, totalPage: 1, pageSize: 0 }
+			}
+		const [, ...data] = await fetch(CSV_URL)
 			.then((res) => res.text())
 			// .then((text) => text.replace(/"/g, ''))
 			.then((text) => text.split('\n'))
@@ -112,7 +115,6 @@ const api = {
 		// const restaurant = restaurants.find((restaurant) => restaurant.id === id)
 		const { data } = await api.list()
 
-		console.log(data)
 		const restaurant = data.find((restaurant) => restaurant.id === id)
 
 		if (!restaurant) {
