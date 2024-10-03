@@ -59,7 +59,7 @@ export default function SearchBox() {
 				)}
 				<button
 					type='submit'
-					className='scale-75 rounded-lg border bg-orange-700/80 p-2 text-white delay-150 ease-in-out hover:scale-90'>
+					className='scale-75 rounded-lg border bg-sky-700/90 p-2 text-white delay-150 ease-in-out hover:scale-90'>
 					Search
 				</button>
 			</form>

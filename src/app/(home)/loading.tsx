@@ -6,7 +6,7 @@ import Sort from '@/components/sort'
 const Loading = () => {
 	return (
 		<>
-			<div className='flex flex-col items-center justify-center gap-x-4 md:flex-row'>
+			<div className='flex flex-col items-center justify-center gap-x-4 md:flex-row md:pb-8'>
 				<SearchBox />
 				<Sort />
 			</div>

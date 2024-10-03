@@ -1,16 +1,15 @@
 {
   "name": "nextjs-restaurant-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "next dev"
+    "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.0.0-canary.176",
+    "next": "15.0.0-canary.177",
     "next-view-transitions": "0.3.2",
     "papaparse": "5.4.1",
     "react": "^18.3.1",
