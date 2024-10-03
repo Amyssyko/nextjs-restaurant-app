@@ -50,13 +50,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	}
 }
 
-// export async function generateStaticParams() {
-// 	const { data } = await api.list({})
+export async function generateStaticParams() {
+	const { data } = await api.list({})
 
-// 	return data.map((restaurant) => ({
-// 		id: restaurant.id
-// 	}))
-// }
+	return data.map((restaurant) => ({
+		id: restaurant.id
+	}))
+}
 
 const Page: FC<Props> = async ({ params }) => {
 	const { id } = await params
