@@ -51,9 +51,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // export async function generateStaticParams() {
-// 	const restaurants = await api.list()
+// 	const { data } = await api.list({})
 
-// 	return restaurants.map((restaurant) => ({
+// 	return data.map((restaurant) => ({
 // 		id: restaurant.id
 // 	}))
 // }

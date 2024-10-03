@@ -1,8 +1,9 @@
 'use client'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
-const Sort = () => {
+const SortClient = () => {
 	const searchParams = useSearchParams()
 	const pathname = usePathname()
 	const { replace } = useRouter()
@@ -45,6 +46,14 @@ const Sort = () => {
 				<option value='desc'>Descending</option>
 			</select>
 		</form>
+	)
+}
+
+function Sort() {
+	return (
+		<Suspense>
+			<SortClient />
+		</Suspense>
 	)
 }
 

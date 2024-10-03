@@ -1,8 +1,9 @@
 'use client'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
-export default function SearchBox() {
+function Search() {
 	const searchParams = useSearchParams()
 	const pathname = usePathname()
 	const { replace } = useRouter()
@@ -64,5 +65,13 @@ export default function SearchBox() {
 				</button>
 			</form>
 		</header>
+	)
+}
+
+export default function SearchBox() {
+	return (
+		<Suspense>
+			<Search />
+		</Suspense>
 	)
 }

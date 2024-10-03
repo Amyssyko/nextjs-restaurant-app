@@ -2,7 +2,7 @@ import RestaurantItem from '@/components/restaurant-item'
 import SearchBox from '@/components/search-box'
 import api from '@/services/api'
 
-const Page = async ({
+const SearchPage = async ({
 	searchParams
 }: {
 	searchParams: Promise<{ query: string }>
@@ -26,4 +26,4 @@ const Page = async ({
 	)
 }
 
-export default Page
+export default SearchPage
