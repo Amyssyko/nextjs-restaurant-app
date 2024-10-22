@@ -4,6 +4,9 @@ import { FC } from 'react'
 import { Restaurant } from '../type'
 import FavButton from './fav-button'
 
+const ramdomImage =
+	'https://random-image-pepebigotes.vercel.app/api/random-image' as const
+
 const RestaurantItem: FC<Restaurant & { isLink?: boolean }> = ({
 	description,
 	id,
@@ -15,12 +18,23 @@ const RestaurantItem: FC<Restaurant & { isLink?: boolean }> = ({
 }) => {
 	return (
 		<article key={id}>
-			<img
-				loading='lazy'
-				alt={name}
-				className='mb-3 aspect-auto h-[400px] w-full rounded-md object-cover'
-				src={image}
-			/>
+			{isLink ?
+				<Link href={`/${id}`}>
+					<img
+						loading='lazy'
+						alt={name}
+						className='mb-3 aspect-auto h-[400px] w-full rounded-md object-cover'
+						src={ramdomImage}
+					/>
+				</Link>
+			:	<img
+					loading='lazy'
+					alt={name}
+					className='mb-3 aspect-auto h-[400px] w-full rounded-md object-cover'
+					src={image}
+				/>
+			}
+
 			<div className='flex items-center justify-center gap-1 md:justify-start'>
 				<h2 className='text-lg font-bold'>
 					{isLink ?
