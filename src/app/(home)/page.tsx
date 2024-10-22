@@ -1,12 +1,10 @@
 import Pagination from '@/components/pagination'
+import RestaurantItem from '@/components/restaurant-item'
 import SearchBox from '@/components/search-box'
 import Sort from '@/components/sort'
-import RestaurantItem from '../../components/restaurant-item'
-import api from '../../services/api'
+import api from '@/services/api'
 
-// export const revalidate = 120
-
-const PAGE_SIZE = '4'
+const PAGE_SIZE = process.env.NEXT_PUBLIC_PAGE_SIZE || '4'
 
 export default async function Home({
 	searchParams
@@ -23,7 +21,7 @@ export default async function Home({
 	})
 
 	return (
-		<>
+		<div className='grid h-full grid-rows-[auto_1fr_auto]'>
 			<div className='flex flex-col items-center justify-center gap-x-4 md:flex-row md:pb-8'>
 				<SearchBox />
 				<Sort />
@@ -40,8 +38,8 @@ export default async function Home({
 						))
 					:	<p className='col-span-full text-center'>No restaurant found</p>}
 				</section>
-				{data && <Pagination {...pagination} />}
 			</div>
-		</>
+			<>{data && <Pagination {...pagination} />}</>
+		</div>
 	)
 }
