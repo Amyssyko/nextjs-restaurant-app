@@ -24,7 +24,7 @@ const api = {
 	}> => {
 		'use server'
 
-		await sleep(750)
+		// await sleep(750)
 
 		const { CSV_URL } = process.env
 		if (!CSV_URL)
@@ -32,7 +32,9 @@ const api = {
 				data: [],
 				pagination: { totalItem: 0, page: 1, totalPage: 1, pageSize: 0 }
 			}
-		const [, ...data] = await fetch(CSV_URL)
+		const [, ...data] = await fetch(CSV_URL, {
+			cache: 'force-cache'
+		})
 			.then((res) => res.text())
 			// .then((text) => text.replace(/"/g, ''))
 			.then((text) => text.split('\n'))
