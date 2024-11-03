@@ -1,3 +1,4 @@
+import Footer from '@/components/footer'
 import Header from '@/components/head'
 import type { Metadata } from 'next'
 import { ViewTransitions } from 'next-view-transitions'
@@ -32,11 +33,7 @@ export default function RootLayout({
 					className={`grid h-dvh w-full grid-rows-[auto_1fr_auto] ${geistSans.variable} ${geistMono.variable} vsc-initialized antialiased`}>
 					<Header title='Restaurant with Next.js' />
 					<main className='px-4 md:px-12'>{children}</main>
-					<footer className='justify-self-center pt-2'>
-						<p className='text-sm text-gray-500'>
-							&copy; {new Date().getFullYear()} Restaurant. All rights reserved.
-						</p>
-					</footer>
+					<Footer />
 				</body>
 			</html>
 		</ViewTransitions>
