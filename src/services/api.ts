@@ -1,7 +1,5 @@
 import { Restaurant } from '../type'
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-
 const api = {
 	list: async (
 		{
@@ -22,9 +20,9 @@ const api = {
 			pageSize: number
 		}
 	}> => {
-		'use server'
+		// cacheLife('seconds')
 
-		// await sleep(750)
+		// await sleep(9750)
 
 		const { CSV_URL } = process.env
 		if (!CSV_URL)
@@ -32,9 +30,7 @@ const api = {
 				data: [],
 				pagination: { totalItem: 0, page: 1, totalPage: 1, pageSize: 0 }
 			}
-		const [, ...data] = await fetch(CSV_URL, {
-			cache: 'force-cache'
-		})
+		const [, ...data] = await fetch(CSV_URL)
 			.then((res) => res.text())
 			// .then((text) => text.replace(/"/g, ''))
 			.then((text) => text.split('\n'))
@@ -110,10 +106,7 @@ const api = {
 		}
 	},
 	fetch: async (id: Restaurant['id']): Promise<Restaurant> => {
-		'use server'
-
-		await sleep(750)
-
+		// await sleep(750)
 		// const restaurant = restaurants.find((restaurant) => restaurant.id === id)
 		const { data } = await api.list()
 
@@ -127,8 +120,7 @@ const api = {
 	},
 
 	search: async (query: string): Promise<Restaurant[]> => {
-		'use server'
-
+		// await sleep(750)
 		// Obtenemos los restaurantes
 		const { data: results } = await api.list()
 		// Filtramos los restaurantes
@@ -141,7 +133,12 @@ const api = {
 		const data = results.filter((restaurant) => {
 			// Si el nombre del restaurante incluye la query
 			if (
-				restaurant.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+				restaurant.name
+					.toLocaleLowerCase()
+					.includes(query.toLocaleLowerCase()) ||
+				restaurant.description
+					.toLocaleLowerCase()
+					.includes(query.toLocaleLowerCase())
 			) {
 				// Lo retornamos
 				return restaurant
