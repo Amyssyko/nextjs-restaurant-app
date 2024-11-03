@@ -11,9 +11,8 @@ type Props = {
 // export const dynamic = 'force-dynamic' // por defecto: auto
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { id } = await params
-	if (!id) {
-		throw new Error('Missing id')
-	}
+	if (!id) throw new Error('Missing id')
+
 	const restaurant = await api.fetch(id)
 	const restaurant_url = getUrl(`/${id}`)
 
@@ -31,18 +30,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			languages: {
 				en: restaurant_url
 			}
-		},
-
-		twitter: {
-			card: 'summary_large_image',
-			title: `${restaurant.name} - Restaurant`,
-			description: restaurant.description,
-			images: [restaurant.image],
-
-			site: '@site',
-			creator: '@creator',
-			creatorId: '@creatorId',
-			siteId: '@siteId'
 		},
 		openGraph: {
 			images: [restaurant.image]
