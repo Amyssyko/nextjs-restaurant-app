@@ -7,7 +7,7 @@ const Loading = () => {
 				isLink={false}
 				description='Loading...'
 				id='0'
-				image='https://via.placeholder.com/400'
+				image='Loading...'
 				name='Loading...'
 				ratings={0}
 				score={0}

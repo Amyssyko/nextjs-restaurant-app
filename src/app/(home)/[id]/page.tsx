@@ -2,7 +2,7 @@ import RestaurantItem from '@/components/restaurant-item'
 import getUrl from '@/utils/get-domain'
 import { Metadata } from 'next'
 import { Link } from 'next-view-transitions'
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 import api from '../../../services/api'
 
 type Props = {
@@ -50,13 +50,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	}
 }
 
-export async function generateStaticParams() {
-	const { data } = await api.list({})
+// export async function generateStaticParams() {
+// 	const { data } = await api.list({})
 
-	return data.map((restaurant) => ({
-		id: restaurant.id
-	}))
-}
+// 	return data.map((restaurant) => ({
+// 		id: restaurant.id
+// 	}))
+// }
 
 const Page: FC<Props> = async ({ params }) => {
 	const { id } = await params
@@ -94,11 +94,13 @@ const Page: FC<Props> = async ({ params }) => {
 					className='hover:underline'>
 					Back to home
 				</Link>
-				<RestaurantItem
-					isLink={false}
-					key={restaurant.id}
-					{...restaurant}
-				/>
+				<Suspense fallback={<div>Loading...</div>}>
+					<RestaurantItem
+						isLink={false}
+						key={restaurant.id}
+						{...restaurant}
+					/>
+				</Suspense>
 			</section>
 		</>
 	)
