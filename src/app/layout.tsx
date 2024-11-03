@@ -1,5 +1,6 @@
 import Footer from '@/components/footer'
 import Header from '@/components/head'
+import { BASE_URL, GITHUB_URL } from '@/utils/get-domain'
 import type { Metadata } from 'next'
 import { ViewTransitions } from 'next-view-transitions'
 import localFont from 'next/font/local'
@@ -18,7 +19,24 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
 	title: 'Restaurant with Next.js',
-	description: 'A app to display a list of restaurants.'
+	description: 'Restaurant with information about the menu and location',
+	abstract: 'App restaurant with Next.js',
+	alternates: {
+		canonical: BASE_URL
+	},
+	authors: {
+		name: 'Amyssyko',
+		url: GITHUB_URL
+	},
+	referrer: 'no-referrer',
+	applicationName: 'Restaurant with Next.js',
+	openGraph: {
+		images: [
+			{
+				url: `${BASE_URL}/favicon.ico`
+			}
+		]
+	}
 }
 
 export default function RootLayout({
