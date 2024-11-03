@@ -1,11 +1,7 @@
 import { Link } from 'next-view-transitions'
-
 import { FC } from 'react'
 import { Restaurant } from '../type'
 import FavButton from './fav-button'
-
-const ramdomImage =
-	'https://random-image-pepebigotes.vercel.app/api/random-image' as const
 
 const RestaurantItem: FC<Restaurant & { isLink?: boolean }> = ({
 	description,
@@ -23,10 +19,12 @@ const RestaurantItem: FC<Restaurant & { isLink?: boolean }> = ({
 					<img
 						loading='lazy'
 						alt={name}
-						className='mb-3 aspect-auto h-[400px] w-full rounded-md object-cover'
-						src={ramdomImage}
+						className='aspect-auto h-[400px] w-full rounded-md object-cover'
+						src={image}
 					/>
 				</Link>
+			: name === 'Loading...' ?
+				<div className='mb-3 aspect-auto h-[400px] w-[400px] animate-pulse rounded-md bg-gray-200'></div>
 			:	<img
 					loading='lazy'
 					alt={name}
